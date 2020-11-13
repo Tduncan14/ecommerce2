@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const uuidv1 = require('uuid/v1');
-const { timeStamp } = require('console');
+const uuidv1 = require('uuidv1');
+
+
+
 
 
 const UserSchema = new mongoose.Schema({
@@ -20,7 +22,7 @@ const UserSchema = new mongoose.Schema({
     required:true,
     unique:32},
 
-    hash_passowrd:{
+    hashed_password:{
         type:String,
         required:true
     },
@@ -40,9 +42,11 @@ const UserSchema = new mongoose.Schema({
         type:Array,
         default:[]
     }
+    ,
+    time : { type : Date, default: Date.now }
 
 },
-{timeStamp:true})
+{timestamp:true})
 
 
 
@@ -53,7 +57,7 @@ UserSchema.virtual('password')
 .set(function(password){
     this._password = password
     this.salt = uuidv1()
-    this.hash_passowrd =this.encryptPassword(password)
+    this.hashed_password =this.encryptPassword(password)
 })
 .get(function(){
 
@@ -61,6 +65,13 @@ UserSchema.virtual('password')
 })
 
 UserSchema.methods = {
+
+    authenicate: function(plainText){
+   
+        return this.encryptPassword(plainText) === this.hashed_password
+
+
+    },
 
     encryptPassword:function(password) {
     
