@@ -29,7 +29,7 @@ const cors = require('cors')
   app.use(expressValidator())
 
 //routes
-app.use('/',userRoutes)
+app.use('/api',userRoutes)
 
 
 const PORT = process.env.PORT || 5000

@@ -1,16 +1,15 @@
 const jwt = require('jsonwebtoken');//generate signed token
-const expressJwt = required('express-jwt') // for authroization check
-const dbUser = require('../Models/User');
-const {errorHandler} =require('../Helpers/Dberror');
+const expressJwt = require('express-jwt') // for authroization check
+const {errorHandler} = require('../Helpers/Dberror');
 const User = require('../Models/User');
-const { db } = require('../Models/User');
+
 
 exports.signup = (req,res) =>{
 
 
   console.log("req.body",req.body)
 
-  const user = new dbUser (req.body)
+  const user = new User (req.body)
   
 
   //  req.name = newUser.name
@@ -33,7 +32,7 @@ exports.signup = (req,res) =>{
 
     res.json({
 
-      user
+      user,
     })
 
    })
@@ -55,6 +54,30 @@ exports.signin =(req,res) =>{
         err:"User with that email does not exist. Please sign up"
       })
     }
+    
+
+   if(!user.authenicate(password)){
+      
+    return res.status(401).json({
+
+      error:'Email and password dont match'
+    })
+
+ }
+  
+     const token = jwt.sign({_id: user._id},process.env.JWT_SECRET)
+
+
+     // PERSIST TOKEN 'T" in cookie expire
+
+     res.cookie('t', token, {expire:new Date() + 9999})
+
+     // return response with user and token to frontend clinet
+
+
+     const {_id,name,email,role} = user
+     
+     return res.json({token,user:{_id,email,name,role}})
   })
 
    // if user is found make sure password and email match
@@ -63,28 +86,6 @@ exports.signin =(req,res) =>{
 
    // genereate a sign token with user id and secret
 
-
-   if(!User.authenicate(password)){
-      
-      return res.status(401).json({
-
-        error:'Email and password dont match'
-      })
-
-   }
-    
-       const token = jwt.sign({_id: user._id},process.env.JWT_SECRET)
-
-
-       // PERSIST TOKEN 'T" in cookie expire
-
-       res.cookie('t', token, {expire:new Date() + 9999})
-
-       // return response with user and token to frontend clinet
-
-
-       const {_id,name,email,role} = user
-       
-       return res.json({token,user:{_id,email,name,role}})
    
 }
+
