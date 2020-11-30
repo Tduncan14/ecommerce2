@@ -9,9 +9,11 @@ const expressValidator = require('express-validator');
 const cors = require('cors')
 
 
+
       Dot.config()
       const authRoutes = require('./Routes/Auths');
       const userRoutes = require ('./Routes/User');
+      const catergoryRoutes = require('./Routes/Category');
 
     
       mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true }).then(()=>{
@@ -33,6 +35,7 @@ const cors = require('cors')
 //routes
 app.use('/api',authRoutes)
 app.use('/api',userRoutes)
+app.use('/api',catergoryRoutes)
 
 
 const PORT = process.env.PORT || 5000

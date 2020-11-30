@@ -5,8 +5,11 @@ const router = express.Router();
 const {
 
     requireSignin,
+    isAdmin,
+    isAuth
 
 } = require('../Controllers/Auths');
+
 
 
 const{findbyId} = require('../Controllers/UserController');
@@ -15,7 +18,7 @@ const{findbyId} = require('../Controllers/UserController');
 router.param('userId',findbyId)
 
 
-router.get('/secret/:userId',requireSignin, (req,res) => {
+router.get('/secret/:userId',requireSignin,isAuth,isAdmin, (req,res) => {
 
    res.json({
        user:req.profile
