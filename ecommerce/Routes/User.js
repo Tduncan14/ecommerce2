@@ -3,18 +3,27 @@ const router = express.Router();
 
 
 const {
-    signup,
-    signin,
-    signout,
+
     requireSignin,
 
 } = require('../Controllers/Auths');
 
 
-const{findById} = require('../Controllers/UserController');
+const{findbyId} = require('../Controllers/UserController');
 
 
-router.param('userId',userById)
+router.param('userId',findbyId)
+
+
+router.get('/secret/:userId',requireSignin, (req,res) => {
+
+   res.json({
+       user:req.profile
+   })
+})
+
+
+
 router.get("/",);
 router.get("/:id");
 router.post("/");
