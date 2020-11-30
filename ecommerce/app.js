@@ -13,7 +13,7 @@ const cors = require('cors')
       Dot.config()
       const authRoutes = require('./Routes/Auths');
       const userRoutes = require ('./Routes/User');
-      const catergoryRoutes = require('./Routes/Category');
+      const catergoryRoutes = require('./Routes/Category')
 
     
       mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true }).then(()=>{

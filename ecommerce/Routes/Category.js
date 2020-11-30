@@ -13,7 +13,7 @@ router.post("/category/create/:userId",requireSignin,isAuth,isAdmin,create);
 
 
 
-
+router.param('userId',findbyId);
 
 
 module.exports = router;
