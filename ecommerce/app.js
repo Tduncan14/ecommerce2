@@ -2,7 +2,6 @@ const express = require('express');
 const app = express()
 const Dot = require('dotenv')
 const mongoose = require('mongoose');
-const userRoutes = require('./Routes/User');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -10,6 +9,7 @@ const expressValidator = require('express-validator');
 const cors = require('cors')
 
       Dot.config()
+      const authRoutes = require('./Routes/Auths');
 
     
       mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true }).then(()=>{
@@ -29,7 +29,7 @@ const cors = require('cors')
   app.use(expressValidator())
 
 //routes
-app.use('/api',userRoutes)
+app.use('/api',authRoutes)
 
 
 const PORT = process.env.PORT || 5000
