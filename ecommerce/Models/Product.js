@@ -31,8 +31,25 @@ price:{
 category:{
     type:ObjectId,
     ref:'Category',
-    maxlength:32
+    maxlength:32,
+    required:true
+},
+
+quantity:{
+    type:Number
+},
+
+photo:{
+    data:Buffer,
+    contentType:String
+},
+
+shipping:{
+    required:false,
+    type:Boolean
+
 }
+
 
 
 
