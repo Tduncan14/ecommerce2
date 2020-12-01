@@ -14,7 +14,7 @@ const cors = require('cors')
       const authRoutes = require('./Routes/Auths');
       const userRoutes = require ('./Routes/User');
       const catergoryRoutes = require('./Routes/Category')
-
+      const ProductRoutes = require('./Routes/Product')
     
       mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true }).then(()=>{
 
@@ -36,7 +36,7 @@ const cors = require('cors')
 app.use('/api',authRoutes)
 app.use('/api',userRoutes)
 app.use('/api',catergoryRoutes)
-
+app.use('/api',ProductRoutes)
 
 const PORT = process.env.PORT || 5000
 
