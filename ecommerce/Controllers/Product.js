@@ -4,6 +4,58 @@ const _ = require('lodash');
 const fs = require('fs')
 const {errorHandler} = require('../Helpers/Dberror')
 
+
+// finding a single product
+
+
+exports.productById = (req,res,next,id) => {
+
+
+
+    console.log('getting data from the database')
+    Product.findById(id).exec((err,product) => {
+
+
+      if(err || !product){
+
+
+        return res.status(400).json({
+
+            error:"product not found"
+        })
+      }
+       req.product = product
+       next();
+    })
+
+    
+
+}
+
+// reading the product
+
+
+exports.read = (req,res) => {
+
+    req.product.photo = undefined
+
+    console.log('trying to read the product')
+
+    return res.json(req.product)
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 exports.create = (req,res) => {
 
 
