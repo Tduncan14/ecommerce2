@@ -6,7 +6,7 @@ const {create} = require('../Controllers/Product')
 const {requireSignin,isAuth,isAdmin} = require('../Controllers/Auths')
 const {findbyId} = require("../Controllers/UserController")
 
-router.post('/')
+router.post('/product/create/:userById',requireSignin,isAuth,isAdmin,create)
 
 
 
