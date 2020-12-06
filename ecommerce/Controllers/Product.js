@@ -130,3 +130,124 @@ exports.create = (req,res) => {
 
     });
 };
+
+
+exports.remove = (req,res) => {
+
+
+    let product = req.product
+
+    product.remove((err,deletedProduct) =>{ 
+
+          if(err){
+
+            return res.status(400).json({
+                error:errorHandler(err)
+            })
+          }
+
+
+          res.json({
+
+              message:"Product is deleted"
+          })
+
+
+    })
+
+
+
+
+
+
+}
+
+
+exports.update =(req,res) =>{
+
+    // how to handle pictures
+
+    let form = new formidable.IncomingForm()
+
+    form.keepExtensions = true
+    
+
+    //so you can parse the req
+
+
+    form.parse(req,(err,fields,files)  => {
+
+        if(err){
+
+            return res.status(400).json({
+
+                error: 'Image could not upload'
+
+            })
+        }
+
+
+         // checking out the fields
+
+
+         const {name,description,price,category,shipping,quantity} = fields
+
+
+         if(!name || !description || !price || !category || !shipping || !quantity){
+
+
+             return res.status(400).json({
+
+                error:"All fields are required"
+
+
+             })
+
+
+
+
+         }
+
+          let product = req.product
+
+          // update the old product using lodash
+          product = _.extend(product,fields)
+
+
+          if(files.photo){
+
+            console.log('Files',files.photo)
+          
+
+
+          if(files.photo.size > 1000000){
+  
+            return res.status(400).json({
+                error:"Image should less than 1mb in size"
+            })
+
+          }
+        
+
+
+          product.photo.data = fs.readFileSync(files.photo.path)
+          product.photo.contentType = files.photo.type
+
+          }
+
+
+          product.save((err,result) =>{
+
+              if(err){
+
+                return res.status(400).json({
+                    error:errorHandler(err)
+                })
+              }
+                 
+               res.json(result)
+          })
+
+    })
+
+}
