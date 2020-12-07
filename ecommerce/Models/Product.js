@@ -49,6 +49,11 @@ shipping:{
     required:false,
     type:Boolean
 
+},
+
+sold:{
+    type:Number,
+    default:0
 }
 
 

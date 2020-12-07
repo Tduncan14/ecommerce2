@@ -251,3 +251,66 @@ exports.update =(req,res) =>{
     })
 
 }
+
+
+exports.list = (req,res) => {
+
+  
+
+    // query and grabbing by order
+
+    let order = req.query.order ? req.query.order : 'asc'
+
+    let sortBy = req.query.sortBy ? req.query.sortBy : '_id'
+
+    let limit = req.query.limit ? req.query.limt : 6
+
+
+//     Product.find().exec((err,products) =>{
+
+//       if(err){
+
+//         res.status(500).json({
+
+//             message:"bad call to the server"
+//         })
+
+
+//       }
+
+//   }) 
+
+
+   Product.find()
+    .select("-photo")
+    .populate('category')
+    .sort([[sortBy,order]])
+    .limit(limit)
+    .exec((err,products) =>{
+
+        if(err){
+            return res.status(400).json({
+                err:'Product not found'
+            })
+        }
+
+        res.send(products)
+    })
+
+
+//   return products
+
+
+}
+
+
+
+// products based on sale // arrival
+// by sell = /products?sortBy=sold&order=desc&limit=4
+
+
+
+// by arrival = /products?sortBy=createdAt&order=desc&limit=4
+// if not params are sent, then all products are returned
+
+
