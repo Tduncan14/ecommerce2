@@ -294,7 +294,7 @@ exports.list = (req,res) => {
             })
         }
 
-        res.send(products)
+        res.json(products)
     })
 
 
@@ -332,10 +332,6 @@ exports.listRelated = ( req,res) =>{
 
 
      })
-
-
-
-
 }
 
 
