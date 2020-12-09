@@ -263,7 +263,7 @@ exports.list = (req,res) => {
 
     let sortBy = req.query.sortBy ? req.query.sortBy : '_id'
 
-    let limit = req.query.limit ? req.query.limt : 6
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6
 
 
 //     Product.find().exec((err,products) =>{
@@ -303,6 +303,40 @@ exports.list = (req,res) => {
 
 }
 
+
+exports.listRelated = ( req,res) =>{
+
+    //  It will find the products based on the req products category
+    //  other products that has the same category, will be returned
+    // 
+
+     let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+
+
+        // queruy the product by relation
+     Product.find({_id:{$ne:req.product},category:req.product.category})
+     .limit(limit)
+     .populate('category','_id name')
+     .exec((err,products) =>{
+
+        if(err){
+
+            return res.status(400).json({
+                error:"Products not found"
+            })
+        }
+
+
+         res.json(products)
+
+
+
+     })
+
+
+
+
+}
 
 
 // products based on sale // arrival
