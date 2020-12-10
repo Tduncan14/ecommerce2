@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {create,productById,read,remove,update,list,listRelated, listCategories} = require('../Controllers/Product')
+const {create,productById,read,remove,update,list,listRelated, listCategories,listBySearch} = require('../Controllers/Product')
 const {requireSignin,isAuth,isAdmin} = require('../Controllers/Auths')
 const {findbyId} = require("../Controllers/UserController")
 
@@ -22,6 +22,8 @@ router.get('/products/related/:productId',listRelated)
 
 // list products by 
 router.get('/products/categories',listCategories)
+
+router.post("/products/by/search", listBySearch);
 
 
 router.param("userById",findbyId);
