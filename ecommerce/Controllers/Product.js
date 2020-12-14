@@ -2,7 +2,8 @@ const Product = require("../Models/Product");
 const formidable = require('formidable');
 const _ = require('lodash');
 const fs = require('fs')
-const {errorHandler} = require('../Helpers/Dberror')
+const {errorHandler} = require('../Helpers/Dberror');
+const { raw } = require("body-parser");
 
 
 // finding a single product
@@ -368,6 +369,8 @@ exports.listCategories = (req,res) =>{
  */
  
 // route - make sure its post
+
+// by search filters from the client side
  
 exports.listBySearch = (req, res) => {
     let order = req.body.order ? req.body.order : "desc";
@@ -412,6 +415,23 @@ exports.listBySearch = (req, res) => {
             });
         });
 };
+
+
+// return the product photo
+
+exports.photo = (req,res,next) =>{
+
+    if(req.product.photo.data){
+
+        res.set('Content-type',req.product.photo.contentType)
+         return res.send(req.product.photo.data)
+
+    }
+
+    next()
+
+
+}
 
 
 // products based on sale // arrival

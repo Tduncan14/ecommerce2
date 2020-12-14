@@ -12,11 +12,15 @@ const {
 
 
 
-const{findbyId} = require('../Controllers/UserController');
+const{findbyId,read,update} = require('../Controllers/UserController');
 
 
-router.param('userId',findbyId)
 
+
+
+router.get("/",);
+router.get("/:id");
+router.post("/");
 
 router.get('/secret/:userId',requireSignin,isAuth,isAdmin, (req,res) => {
 
@@ -25,11 +29,9 @@ router.get('/secret/:userId',requireSignin,isAuth,isAdmin, (req,res) => {
    })
 })
 
+router.get('/user/:userId',requireSignin,isAuth,read)
+router.put('/user',requireSignin,isAuth,update)
 
-
-router.get("/",);
-router.get("/:id");
-router.post("/");
-
+router.param('userId',findbyId)
 
 module.exports = router;
