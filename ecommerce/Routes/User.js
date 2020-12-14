@@ -30,7 +30,7 @@ router.get('/secret/:userId',requireSignin,isAuth,isAdmin, (req,res) => {
 })
 
 router.get('/user/:userId',requireSignin,isAuth,read)
-router.put('/user',requireSignin,isAuth,update)
+router.put('/user/:userId',requireSignin,isAuth,update)
 
 router.param('userId',findbyId)
 
