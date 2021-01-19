@@ -1,8 +1,18 @@
 import React from 'react';
+import Layout from '../core/Layout';
+
+
+const Signup = () => (
+
+    <Layout title="Sign up" description="Sign up to the App">
 
 
 
-const Signup = () => <div>sign up</div>
+    </Layout>
+
+
+
+)
 
 
 

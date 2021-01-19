@@ -10,7 +10,7 @@ const Routes = () => {
 
     return (
         <Router>
-            <Menu />
+       
             <Switch>
                 <Home path ="/" exact component ={Home} />
                 <Route path="/signin" exact component={Signin}/>
