@@ -13,10 +13,11 @@ const layout = ({title = 'Title',description ='description',children ,className}
     <h2>{title}</h2>
     <p className="lead">{description}</p>
   </div>
+  </div>
 
-    <div className={className}>{children}</div>
+    <div className={className}>{children} </div>
 
-    </div>
+   
 
 </>
 
