@@ -25,19 +25,34 @@ const Signup = () => {
         e.preventDefault()
 
 
-     Signup(name,email,password)
+     Signup({name,email,password})
 
 
     }
 
     // sending
 
-    const Signup = (name,email,password) => {
+    const Signup = (user) => {
 
-        console.log({name:'name',
-                     email:'email',
-                     password:'password'})
+        // console.log({name:'name',
+        //              email:'email',
+        //              password:'password'})
 
+      fetch(`${API}/signup`,{
+          method:"POST",
+          headers:{
+              Accept:"application/json",
+              "Content-Type":"application/json",
+          },
+          body:JSON.stringify(user)
+      })
+       .then(response =>{
+
+        return response.json()
+       })
+        .catch(err =>{
+            console.log(err)
+        })
  
 
     }
