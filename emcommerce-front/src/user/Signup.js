@@ -18,6 +18,31 @@ const Signup = () => {
     })
 
 
+     const {name,email,password} = values
+
+
+    const clickSubmit = (e) => {
+        e.preventDefault()
+
+
+     Signup(name,email,password)
+
+
+    }
+
+    // sending
+
+    const Signup = (name,email,password) => {
+
+        console.log({name:'name',
+                     email:'email',
+                     password:'password'})
+
+ 
+
+    }
+
+
     const signUpForm = () =>(
 
          
@@ -38,7 +63,7 @@ const Signup = () => {
                 <input onChange={handleChange('password')} type="password" className="form-control"/>
             </div>
 
-            <button className="btn btn-primary">
+            <button onClick={clickSubmit} className="btn btn-primary">
                 Submit
             </button>
         </form>
