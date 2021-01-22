@@ -1,6 +1,8 @@
 import {useState,useEffect}from 'react';
 import Layout from '../core/Layout';
+import{Link} from 'react-router-dom';
 import {API}from '../config'
+import {signup} from '../auth/apiIndex'
 
 const Signup = () => {
 
@@ -18,11 +20,12 @@ const Signup = () => {
     })
 
 
-     const {name,email,password} = values
+     const {name,email,password,success,error} = values
 
 
     const clickSubmit = (e) => {
         e.preventDefault()
+        setValues({...values,error:false})
 
 
      Signup({name,email,password})
@@ -48,31 +51,7 @@ const Signup = () => {
 
     // sending
 
-    const Signup = (user) => {
-
-        // console.log({name:'name',
-        //              email:'email',
-        //              password:'password'})
-
-      fetch(`${API}/signup`,{
-          method:"POST",
-          headers:{
-              Accept:"application/json",
-              "Content-Type":"application/json",
-          },
-          body:JSON.stringify(user)
-      })
-       .then(response =>{
-
-        return response.json()
-       })
-        .catch(err =>{
-            console.log(err)
-        })
- 
-
-    }
-
+   
 
     const signUpForm = () =>(
 
@@ -125,8 +104,9 @@ const Signup = () => {
 
      const showSuccess = () => (
          <div className="alert alert-info" style={{display:success ?'':'none'}}>
-               New Account is created. Please Sign
+               New Account is created. Please <Link to="/signin"> Sign  In </Link>
          </div>
+
      )
 
     return(
@@ -138,7 +118,7 @@ const Signup = () => {
         {signUpForm()}
 
 
-        {JSON.stringify(values)}
+        {/* {JSON.stringify(values)} */}
 
      </Layout>
 
