@@ -3,6 +3,7 @@ import Layout from '../core/Layout';
 import{Link,Redirect} from 'react-router-dom';
 import {API}from '../config'
 import {signin} from '../auth/apiIndex'
+import {authenicate} from '../auth/apiIndex'
 
 const Signin = () => {
 
@@ -35,10 +36,20 @@ const Signin = () => {
 
          }
          else{
-             setValues({
+            //  setValues({
+            //      ...values,
+            //     redirectToReferrer:true
+            //  })
+
+            authenicate(data,
+                ()=>{
+                      setValues({
                  ...values,
                 redirectToReferrer:true
              })
+
+
+                })
          }
      })
 
@@ -110,7 +121,7 @@ const Signin = () => {
      }
 
     return(
-    <Layout title="Sign up" description="Sign up to the App"
+    <Layout title="Sign im" description="Sign up to the App"
      className="container col-md-8 offset-md-2">
         
         {showError()}

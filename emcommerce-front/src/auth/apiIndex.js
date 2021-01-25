@@ -57,3 +57,27 @@ export const signin = (user) => {
 
 }
 
+
+export const authenicate = (data,next) => {
+
+
+    if(typeof window !== 'undefined'){
+
+
+        localStorage.setItem('jwt',JSON.stringify(data))
+        next()
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+
