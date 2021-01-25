@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link,withRouter} from 'react-router-dom';
-
+import {signout} from '../auth/apiIndex';
 
 const isActive = (history,path) =>{
 
@@ -35,6 +35,22 @@ const Menu = ({history}) => {
             <li className="nav-item">
                 
                 <Link className="nav-link"  style={isActive(history, '/Signup')} to="/signUp"> Sign Up</Link>
+            </li>
+
+            <li className="nav-item">
+           
+             <span 
+               className="nav-link"
+               style={{cursor:"pointer", color:'#fffff'}}
+               onClick={()=> signout(() => {
+
+                  history.push('/')
+               })}>
+
+                   Sign out
+               </span>
+                
+
             </li>
 
 
