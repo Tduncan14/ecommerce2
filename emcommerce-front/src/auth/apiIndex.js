@@ -81,3 +81,10 @@ export const authenicate = (data,next) => {
 
 }
 
+
+export const signout = (next) => {|
+
+
+
+
+}
