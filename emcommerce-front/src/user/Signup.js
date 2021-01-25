@@ -28,7 +28,7 @@ const Signup = () => {
         setValues({...values,error:false})
 
 
-     Signup({name,email,password})
+     signup({name,email,password})
      .then(data =>{
          if(data.error){
              setValues({...values, error:data.error, success:false})

@@ -121,7 +121,7 @@ const Signin = () => {
      }
 
     return(
-    <Layout title="Sign im" description="Sign up to the App"
+    <Layout title="Sign in" description="Sign up to the App"
      className="container col-md-8 offset-md-2">
         
         {showError()}

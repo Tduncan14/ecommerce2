@@ -5,7 +5,7 @@ import {API}from '../config'
 
 
 
- export const Signup = (user) => {
+ export const signup = (user) => {
 
     // console.log({name:'name',
     //              email:'email',
