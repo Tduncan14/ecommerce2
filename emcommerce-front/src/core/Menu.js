@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link,withRouter} from 'react-router-dom';
-import {signout} from '../auth/apiIndex';
+import {signout,isAuthenicated} from '../auth/apiIndex';
+
 
 const isActive = (history,path) =>{
 
@@ -26,32 +27,42 @@ const Menu = ({history}) => {
                 <Link className="nav-link" style={isActive(history, '/')} to="/">Home</Link>
                
             </li>
-            <li className="nav-item">
-                
-                <Link className="nav-link"  style={isActive(history, '/Signin')}  to="/signIn">Sign In</Link>
-               
-            </li>
 
-            <li className="nav-item">
+             {!isAuthenicated()&&(
+                 <div>
+                      <li className="nav-item">
                 
-                <Link className="nav-link"  style={isActive(history, '/Signup')} to="/signUp"> Sign Up</Link>
-            </li>
-
-            <li className="nav-item">
+                      <Link className="nav-link"  style={isActive(history, '/Signin')}  to="/signIn">Sign In</Link>
+                     
+                  </li>
+      
+                  <li className="nav-item">
+                      
+                      <Link className="nav-link"  style={isActive(history, '/Signup')} to="/signUp"> Sign Up</Link>
+                  </li>
+                </div>
+      
+             )   
+}
+       
+          
+          {isAuthenicated() && (
+                 <li className="nav-item">
            
-             <span 
-               className="nav-link"
-               style={{cursor:"pointer", color:'#fffff'}}
-               onClick={()=> signout(() => {
-
-                  history.push('/')
-               })}>
-
-                   Sign out
-               </span>
-                
-
-            </li>
+                 <span 
+                   className="nav-link"
+                   style={{cursor:"pointer", color:'#fffff'}}
+                   onClick={()=> signout(() => {
+    
+                      history.push('/')
+                   })}>
+    
+                       Sign out
+                   </span>
+                    
+    
+                </li>
+          )}
 
 
         </ul>

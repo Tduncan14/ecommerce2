@@ -120,7 +120,11 @@ export const isAuthenicated = () => {
 
         return JSON.parse(localStorage.getItem('jwt'))
     }
-    
+    else {
+        return false;
+    }
+
+
 }
 
 
