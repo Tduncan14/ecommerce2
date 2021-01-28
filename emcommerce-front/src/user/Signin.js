@@ -3,7 +3,7 @@ import Layout from '../core/Layout';
 import{Link,Redirect} from 'react-router-dom';
 import {API}from '../config'
 import {signin} from '../auth/apiIndex'
-import {authenicate} from '../auth/apiIndex'
+import {authenicate,isAuthenicated} from '../auth/apiIndex'
 
 const Signin = () => {
 
@@ -22,6 +22,7 @@ const Signin = () => {
 
 
      const {email,password,loading,error,redirectToReferrer} = values
+     const {user} = isAuthenicated()
 
 
     const clickSubmit = (e) => {
@@ -113,10 +114,20 @@ const Signin = () => {
 
      const redirectUser = () =>{
 
-        if( redirectToReferrer
-            ){
+        if(redirectToReferrer){
+            if(user && user.role === 1){
+                return <Redirect to="/admin/dashboard"/>
 
-            return<Redirect to='/'/>;
+            }
+            else{
+                return <Redirect to="/user/dashboard"/>
+            }
+        }
+
+        // if( redirectToReferrer
+        //     ){
+
+        //     return<Redirect to='/'/>;
         }
      }
 
@@ -136,7 +147,7 @@ const Signin = () => {
 
     )
 
-
+    }
 }
 
 
