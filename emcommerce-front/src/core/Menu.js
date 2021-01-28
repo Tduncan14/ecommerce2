@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link,withRouter} from 'react-router-dom';
 import {signout,isAuthenicated} from '../auth/apiIndex';
-
+import {Dashboard} from '../user/Userdashboard';
 
 const isActive = (history,path) =>{
 
@@ -28,8 +28,14 @@ const Menu = ({history}) => {
                
             </li>
 
+            <li className="nav-item">
+                <Link className="nav-link" style={isActive(history, '/dashboard')} to="/dashboard">Dashboard</Link>
+               
+            </li>
+
+
              {!isAuthenicated()&&(
-                 <div>
+                 <>
                       <li className="nav-item">
                 
                       <Link className="nav-link"  style={isActive(history, '/Signin')}  to="/signIn">Sign In</Link>
@@ -40,7 +46,7 @@ const Menu = ({history}) => {
                       
                       <Link className="nav-link"  style={isActive(history, '/Signup')} to="/signUp"> Sign Up</Link>
                   </li>
-                </div>
+                </>
       
              )   
 }
