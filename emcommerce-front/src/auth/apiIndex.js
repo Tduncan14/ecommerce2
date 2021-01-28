@@ -109,7 +109,7 @@ export const signout = (next) => {
 export const isAuthenicated = () => {
 
 
-    if(typeof window == 'undefined'){
+    if(typeof window === 'undefined'){
 
 
         return false;
