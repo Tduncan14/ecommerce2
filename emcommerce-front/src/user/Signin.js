@@ -129,7 +129,7 @@ const Signin = () => {
 
         //     return<Redirect to='/'/>;
         }
-     }
+     
 
     return(
     <Layout title="Sign in" description="Sign up to the App"
@@ -148,7 +148,7 @@ const Signin = () => {
     )
 
     }
-}
+
 
 
 
