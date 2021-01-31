@@ -128,6 +128,11 @@ const Signin = () => {
         //     ){
 
         //     return<Redirect to='/'/>;
+
+        if(isAuthenicated()){
+            
+            return <Redirect to="/" />
+        }
         }
      
 
