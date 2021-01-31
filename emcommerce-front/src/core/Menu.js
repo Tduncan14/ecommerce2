@@ -28,10 +28,26 @@ const Menu = ({history}) => {
                
             </li>
 
+    {
+          isAuthenicated()&&isAuthenicated().user.role === 0 && (
             <li className="nav-item">
-                <Link className="nav-link" style={isActive(history, '/user/dashboard')} to="/user/dashboard">Dashboard</Link>
-               
-            </li>
+            <Link className="nav-link" style={isActive(history, '/user/dashboard')} to="/user/dashboard">Dashboard</Link>
+           
+     </li>)
+    }
+    {
+    
+        isAuthenicated()&&isAuthenicated().user.role ===  1 && (
+          <li className="nav-item">
+          <Link className="nav-link" style={isActive(history, '/admin/dashboard')} to="/admin/dashboard">Dashboard</Link>
+         
+      </li> )
+  }
+
+
+
+
+
 
 
              {!isAuthenicated()&&(
