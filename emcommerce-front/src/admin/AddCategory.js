@@ -57,12 +57,34 @@ const AddCategory = () => {
           </button>
       </form>
 
-
-
-
-
     )
 
+
+   return (
+
+    <Layout title="Add a new category" 
+    description={`G'day ${name}, ready to add a new category`} 
+    >
+
+    <div className="row">
+
+  
+
+        <div className="col-md-8 offset-md-2">
+
+            {newCategoryForm()}
+           
+
+        </div>
+
+
+    </div>
+
+   
+</Layout>
+
+
+   )
 
 
 }
