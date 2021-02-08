@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Layout from '../core/Layout';
-import {isAuthenicated} from '../auth';
+import {isAuthenicated} from '../auth/apiIndex';
 import {Link} from 'react-router-dom';
 
 
