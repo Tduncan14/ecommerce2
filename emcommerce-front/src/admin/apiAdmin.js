@@ -3,7 +3,7 @@ import {API} from '../config';
 
 export const createCategory = (userId,token,category) => {
 
-    return fetch(`${API}/category/create${userId}`,{
+    return fetch(`${API}/category/create/${userId}`,{
 
      method:"POST",
      headers:{

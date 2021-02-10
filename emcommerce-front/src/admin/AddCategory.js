@@ -32,18 +32,19 @@ const AddCategory = () => {
     const clickSubmit = (e) =>{
 
         e.preventDefault()
-        setError('')
+        setError(false)
         setSuccess(false)
 
         // male request api to create category
         createCategory(user._id,token,{name})
+
         .then(data =>{
 
             if(data.error){
-                setError(data.error)
+                setError(true)
             }
             else{
-                setError('');
+                setError(false);
                 setSuccess(true);
             }
         })
@@ -63,7 +64,8 @@ const AddCategory = () => {
                className="form-control" 
                onChange={handleChange}
                value={name}
-               autoFocus/>
+               autoFocus
+               required/>
           </div>
 
           <button className="btn btn-outline-primary">
@@ -86,8 +88,8 @@ const AddCategory = () => {
      const showError = () => {
 
 
-        if(success){
-            return <h3 className="text-danger">{name} it should be uniqued </h3>
+        if(error){
+            return <h3 className="text-danger">{name}  should be uniqued </h3>
         }
      }
 
@@ -95,7 +97,7 @@ const AddCategory = () => {
    return (
 
     <Layout title="Add a new category" 
-    description={`G'day ${name}, ready to add a new category`} 
+    description={` ${user.name} is creating a category`} 
     >
 
     <div className="row">
@@ -103,7 +105,8 @@ const AddCategory = () => {
    
 
         <div className="col-md-8 offset-md-2">
-
+            {showSuccess()}
+            {showError()}
             {newCategoryForm()}
            
 
