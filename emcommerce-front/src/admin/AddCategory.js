@@ -93,6 +93,16 @@ const AddCategory = () => {
         }
      }
 
+     const goBack = () => {
+
+
+        return(
+        <div className="mt-5">
+            <Link to="/admin/dashboard" className="text-warning"> Back to Dashboard</Link>
+        </div>
+        )
+     }
+
 
    return (
 
@@ -108,6 +118,7 @@ const AddCategory = () => {
             {showSuccess()}
             {showError()}
             {newCategoryForm()}
+            {goBack()}
            
 
         </div>
