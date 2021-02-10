@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Layout from '../core/Layout';
 import {isAuthenicated} from '../auth/apiIndex';
 import {Link} from 'react-router-dom';
+import {createCategory} from './apiAdmin'
 
 
 const AddCategory = () => {
@@ -17,7 +18,15 @@ const AddCategory = () => {
         setName(e.target.value)
 
 
+
+
     }
+
+
+       // destructure use and token from localStorage
+
+       const{user,token} = isAuthenicated()
+
 
 
     const clickSubmit = (e) =>{
@@ -27,17 +36,22 @@ const AddCategory = () => {
         setSuccess(false)
 
         // male request api to create category
+        createCategory(user._id,token,{name})
+        .then(data =>{
 
-
-
+            if(data.error){
+                setError(data.error)
+            }
+            else{
+                setError('');
+                setSuccess(true);
+            }
+        })
     }
 
 
 
-    // destructure use and token from localStorage
-
-    const{user,token} = isAuthenicated()
-
+ 
 
     const newCategoryForm = () => (
 
@@ -60,6 +74,24 @@ const AddCategory = () => {
     )
 
 
+     const showSuccess = () => {
+
+
+        if(success){
+            return <h3 className="text-success">{name} is created </h3>
+        }
+     }
+
+     
+     const showError = () => {
+
+
+        if(success){
+            return <h3 className="text-danger">{name} it should be uniqued </h3>
+        }
+     }
+
+
    return (
 
     <Layout title="Add a new category" 
@@ -68,7 +100,7 @@ const AddCategory = () => {
 
     <div className="row">
 
-  
+   
 
         <div className="col-md-8 offset-md-2">
 
