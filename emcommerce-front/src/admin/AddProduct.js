@@ -13,6 +13,55 @@ const AddProduct = () => {
     const {user,token} = isAuthenicated()
 
 
+    const [values,setValues] = useState({
+
+        name:'',
+        description:'',
+        price:'',
+        categories:[],
+        category:'',
+        shipping:'',
+        quantity:'',
+        photo:'',
+        loading:false,
+        error:'',
+        createdProduct:'',
+        redirectToProfile:false,
+        formData:''
+
+    })
+
+
+    const {name
+        ,description,
+        price,
+        categories,
+        category,
+        shipping,
+        quantity,
+        createdProduct,
+        formData,
+        redirectToProfile} = values
+
+
+
+        const newPostForm = () => (
+
+            <form className="mb-3">
+                <h4>Phost Photo</h4>
+                <div className="form-group">
+                  <label className="btn btn-secondary">  
+                  <input type="file" name="photo" accept="image/*"/>
+                  </label>
+                </div>
+            </form>
+
+
+
+
+        )
+ 
+
     return(
         <Layout
 
@@ -20,7 +69,9 @@ const AddProduct = () => {
         description="Adding new product">
 
             <div className="row">
-                <div className="col-md-8 offset-md-2">...</div>
+                <div className="col-md-8 offset-md-2">
+                    {newPostForm()}
+                </div>
             </div>
 
 
