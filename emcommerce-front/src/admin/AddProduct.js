@@ -32,6 +32,18 @@ const AddProduct = () => {
     })
 
 
+    const handleChange = name = e => {
+
+     e.preventDefault()
+     const [name] = setValues(name)
+
+
+
+
+
+    }
+
+
     const {name
         ,description,
         price,
@@ -51,9 +63,44 @@ const AddProduct = () => {
                 <h4>Phost Photo</h4>
                 <div className="form-group">
                   <label className="btn btn-secondary">  
-                  <input type="file" name="photo" accept="image/*"/>
+                  <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*"/>
                   </label>
                 </div>
+
+                <div className="form-group">
+                    <label>name</label>
+                    <input onChange={handleChange('name')} type="text" className="form-control" value={name}/>
+                </div>
+
+                <div className="form-group">
+                    <label>description</label>
+                    <textarea onChange={handleChange('description')} type="text" className="form-control" value={description}/>
+                </div>
+
+                <div className="form-group">
+                    <label>price</label>
+                    <input onChange={handleChange('price')} type="number" className="form-control" value={price}/>
+                </div>
+
+                <div className="form-group">
+                    <label>category</label>
+                    <select onChange={handleChange('category')} className="form-control" >
+
+
+                    </select>
+                </div>
+
+
+               
+
+
+
+
+
+
+
+
+                
             </form>
 
 
