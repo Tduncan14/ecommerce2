@@ -32,16 +32,14 @@ const AddProduct = () => {
     })
 
 
-    const handleChange = name = e => {
 
-     e.preventDefault()
-     const [name] = setValues(name)
+     useEffect(() => {
 
-
+        setValues({...values, formData: new FormData()})
 
 
+     },[])
 
-    }
 
 
     const {name
@@ -57,9 +55,50 @@ const AddProduct = () => {
 
 
 
+
+           
+        const handleChange = name => event => {
+
+            event.preventDefault()
+          
+            const value = name == 'photo' ? event.target.files[0] : event.target.value;
+            
+            formData.set(name,value)
+
+            setValues({...values, [name]:value})
+       
+       
+       
+       
+       
+           }
+
+           const clickSubmit =(event) =>{
+
+            event.preventDefault()
+
+            setValues({...values, error:'', loading:true})
+
+            createProduct( user._id, token,formData)
+            .then(data => {
+                if(data.error){
+                    setValues({...values, error:data.error})
+                }
+
+                else {
+                    setValues({
+                       ...values ,name:'',description:'', photo:'' ,price:'', quantity:'', loading:false, createdProduct:data.name
+                    })
+                }
+            })
+
+
+            
+           }
+
         const newPostForm = () => (
 
-            <form className="mb-3">
+            <form className="mb-3" onSubmit={clickSubmit}>
                 <h4>Phost Photo</h4>
                 <div className="form-group">
                   <label className="btn btn-secondary">  
@@ -85,22 +124,28 @@ const AddProduct = () => {
                 <div className="form-group">
                     <label>category</label>
                     <select onChange={handleChange('category')} className="form-control" >
+                    
+                    <option value="602343f9a0ed8f26a8ee7de6">Pokemon</option>
+                    </select>
+                </div>
+
+                <div className="form-group">
+                    <label>Quantity</label>
+                    <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity}/>
+                </div>
 
 
+                <div className="form-group">
+                    <label>Shipping</label>
+                    <select onChange={handleChange('shipping')} className="form-control" >
+                     <option value ="0">no</option>
+                     <option value ="1">yes</option>
+                    <option value="602343f9a0ed8f26a8ee7de6">Pokemon</option>
                     </select>
                 </div>
 
 
-               
-
-
-
-
-
-
-
-
-                
+        <button className="btn btn-outline-primary"> Create Button</button>
             </form>
 
 
