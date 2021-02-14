@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import Layout from "../core/Layout";
 import {isAuthenicated} from '../auth/apiIndex';
 import {Link} from 'react-router-dom';
-import {createProduct} from './apiAdmin';
+import {createProduct,getCategories} from './apiAdmin';
 
 
 
@@ -31,12 +31,31 @@ const AddProduct = () => {
 
     })
 
+    // load categories and set form data
+
+    const init = () => {
+
+        getCategories()
+        .then(data => {
+
+            if(data.error){
+                setValues({...values, error:data,error})
+            }
+           else{
+               setValues({...values,categories:data,formData:new FormData()})
+           }
+
+        })
+
+
+
+    }
+
 
 
      useEffect(() => {
 
-        setValues({...values, formData: new FormData()})
-
+           init()
 
      },[])
 
@@ -81,8 +100,8 @@ const AddProduct = () => {
 
             createProduct( user._id, token,formData)
             .then(data => {
-                if(data.error){
-                    setValues({...values, error:data.error})
+                if(data.err){
+                    setValues({...values, error:data.err})
                 }
 
                 else {
@@ -126,6 +145,7 @@ const AddProduct = () => {
                     <select onChange={handleChange('category')} className="form-control" >
                     
                     <option value="602343f9a0ed8f26a8ee7de6">Pokemon</option>
+                    <option value="602343f9a0ed8f26a8ee7de6">Php</option>
                     </select>
                 </div>
 
@@ -140,7 +160,7 @@ const AddProduct = () => {
                     <select onChange={handleChange('shipping')} className="form-control" >
                      <option value ="0">no</option>
                      <option value ="1">yes</option>
-                    <option value="602343f9a0ed8f26a8ee7de6">Pokemon</option>
+                
                     </select>
                 </div>
 
