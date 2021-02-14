@@ -39,7 +39,7 @@ const AddProduct = () => {
         .then(data => {
 
             if(data.error){
-                setValues({...values, error:data,error})
+                setValues({...values, error:data.error})
             }
            else{
                setValues({...values,categories:data,formData:new FormData()})
@@ -144,8 +144,11 @@ const AddProduct = () => {
                     <label>category</label>
                     <select onChange={handleChange('category')} className="form-control" >
                     
-                    <option value="602343f9a0ed8f26a8ee7de6">Pokemon</option>
-                    <option value="602343f9a0ed8f26a8ee7de6">Php</option>
+                    <option>Please Select</option>
+                       {categories && categories.map((c,i) => (
+
+                           <option key={i} value={c._id}>{c.name}</option>
+                       ))}
                     </select>
                 </div>
 
