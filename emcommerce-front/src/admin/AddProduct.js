@@ -161,6 +161,7 @@ const AddProduct = () => {
                 <div className="form-group">
                     <label>Shipping</label>
                     <select onChange={handleChange('shipping')} className="form-control" >
+                    <option >please select</option>
                      <option value ="0">no</option>
                      <option value ="1">yes</option>
                 
@@ -174,6 +175,19 @@ const AddProduct = () => {
 
 
 
+        )
+
+        const showError = () => (
+
+            <div className="alert alert-danger" style={{display:error ? '' : 'none'}}>
+                {error}
+            </div>
+        )
+
+        const showSuccess = () => (
+            <div className="alert alert-info" style={{display:createProduct ? '': none}}>
+                <h2>{`${createProduct} `} is created</h2>
+            </div>
         )
  
 
