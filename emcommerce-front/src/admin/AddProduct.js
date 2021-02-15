@@ -70,7 +70,9 @@ const AddProduct = () => {
         quantity,
         createdProduct,
         formData,
-        redirectToProfile} = values
+        redirectToProfile,
+        loading,
+        error} = values
 
 
 
@@ -185,9 +187,17 @@ const AddProduct = () => {
         )
 
         const showSuccess = () => (
-            <div className="alert alert-info" style={{display:createProduct ? '': none}}>
-                <h2>{`${createProduct} `} is created</h2>
+            <div className="alert alert-info" style={{display:createdProduct ? '': 'none'}}>
+                <h2> product is created</h2>
+                {/* {`${createProduct.product} `}  */}
             </div>
+        )
+
+        const showLoading = () => (
+
+            loading && (<div className="alert alert-success"> 
+               <h2>loading...</h2>
+            </div>)
         )
  
 
@@ -199,6 +209,9 @@ const AddProduct = () => {
 
             <div className="row">
                 <div className="col-md-8 offset-md-2">
+                    {showLoading()}
+                    {showSuccess()}
+                    {showError()}
                     {newPostForm()}
                 </div>
             </div>
