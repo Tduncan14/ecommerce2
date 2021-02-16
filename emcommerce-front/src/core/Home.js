@@ -37,10 +37,18 @@ const Home = () => {
       
     }
 
-
+    
+    useEffect(() =>{
+        loadProductsByArrival()
+        loadProductsBySell()
+    },[])
 
 
    return( <Layout title="Home Page" description="E-Commerce">
+
+       {JSON.stringify(productByArrival)}
+       <hr />
+       {JSON.stringify(productsBySell)}
 
     </Layout>)
 }
