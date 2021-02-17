@@ -28,6 +28,20 @@ const Menu = ({history}) => {
                
             </li>
 
+
+            <li className="nav-items">
+
+                <Link 
+                  className="nav-link"
+                  style={isActive(history,"/shop")}
+                  to="/shop">
+                      Shop
+                  </Link>
+            </li>
+
+
+
+
     {
           isAuthenicated()&&isAuthenicated().user.role === 0 && (
             <li className="nav-item">
