@@ -4,13 +4,15 @@ import Layout from "./Layout";
 import Card from "./Card";
 import {getCategories} from './apiCore';
 import Checkbox from './Checkbox';
+import {prices} from "./fixedPrices";
+import RadioBox from './RadioBox' ;
 
 
 const Shop = () => {
 
     const [myFilters,setMyFilters] = useState({
 
-        filters: {categories:[], price:[]}
+        filters: {categories:[], prices:[]}
     })
     const[categories,setCategories] = useState([])
     const[error,setErrors] = useState([false])
@@ -73,6 +75,19 @@ const Shop = () => {
                     <ul>
                       <Checkbox categories={categories}  handleFilter={ filters => handleFilter(filters,'category')}/>
                       </ul>
+
+            <h4>Filter by prices</h4>
+
+                <div>
+                    <RadioBox
+                      prices={prices}
+                      handleFilter={filter =>
+                           handleFilter(filter,
+                            "price")} />
+
+                </div>
+
+
                  </div>
 
 
