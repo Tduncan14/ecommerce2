@@ -8,8 +8,14 @@ import Checkbox from './Checkbox';
 
 const Shop = () => {
 
+    const [myFilters,setMyFilters] = useState({
+
+        filters: {categories:[], price:[]}
+    })
     const[categories,setCategories] = useState([])
     const[error,setErrors] = useState([false])
+
+
 
 
 
@@ -39,6 +45,21 @@ const Shop = () => {
 
     },[])
 
+
+    const handleFilter = (filters, filterBy) => {
+          console.log(filters, filterBy)
+
+
+          const newFilters = {...myFilters}
+
+          newFilters.filters[filterBy] = filters
+
+
+          setMyFilters(newFilters);
+
+
+    }
+
     return(
         <Layout
          title="Shop page"
@@ -50,13 +71,13 @@ const Shop = () => {
                  <div className="col-4">\
                  <h4> Filter by categories</h4>
                     <ul>
-                      <Checkbox categories={categories} />
+                      <Checkbox categories={categories}  handleFilter={ filters => handleFilter(filters,'category')}/>
                       </ul>
                  </div>
 
 
                  <div className="col-8">
-                     right  sidebar
+                     {JSON.stringify(myFilters)}
                  </div>
 
              </div>
