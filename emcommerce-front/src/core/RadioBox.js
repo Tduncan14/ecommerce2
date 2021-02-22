@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 
 
 
-const RadioBox = ({prices}) => {
+const RadioBox = ({prices,handleFilter}) => {
 
 
     const [value,setValue] = useState(0)
@@ -10,7 +10,10 @@ const RadioBox = ({prices}) => {
 
 
 
-   const handleChange = () => {
+   const handleChange = (event) => {
+
+    handleFilter(event.target.value)
+    setValue(event.target.value);
 
 
    }
@@ -22,6 +25,7 @@ const RadioBox = ({prices}) => {
                   onChange={handleChange}
                   value={`${p._id}`}
                   type="radio"
+                  name={p}
                   className="mr-2 ml-4"/>
 
                   <label className="form-check-label">{p.name}</label>
