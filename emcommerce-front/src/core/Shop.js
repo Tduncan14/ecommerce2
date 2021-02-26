@@ -66,6 +66,9 @@ const Shop = () => {
           }
 
 
+          loadFilteredResults(myFilters.filters)
+
+
           setMyFilters(newFilters);
 
     }
@@ -86,6 +89,12 @@ const Shop = () => {
 
         }
          return array
+    }
+
+
+    const loadFilteredResults = (newFilters) => {
+          return  console.log(newFilters,'backend')
+
     }
 
     return(
