@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import Layout from "./Layout";
 // import {getProducts} from './apiCore';
 import Card from "./Card";
-import {getCategories} from './apiCore';
+import {getCategories,getFilteredProducts} from './apiCore';
 import Checkbox from './Checkbox';
 import {prices} from "./fixedPrices";
 import RadioBox from './RadioBox' ;
@@ -17,12 +17,10 @@ const Shop = () => {
     })
     const[categories,setCategories] = useState([])
     const[error,setErrors] = useState([false])
-
-
-
-
-
-
+    const[limit,setLimit] = useState(6)
+    const[skip,setSkip] = useState(0)
+    const [filteredResults, setFilteredResults] = useState([]);
+ 
 
 
 
@@ -42,9 +40,35 @@ const Shop = () => {
     }
 
 
+    const loadFilteredResults = (newFilters) => {
+        // return  console.log(newFilters,'backend')
+
+        getFilteredProducts(skip,limit,newFilters)
+        .then(data => {
+
+            if(data.error){
+                setErrors(data.error)
+            }
+
+            else{
+
+                setFilteredResults(data.data)
+
+            }
+
+        })
+
+  }
+
+
     useEffect(()=>{
 
         init()
+
+
+        loadFilteredResults(skip,limit,myFilters.filters)
+
+        console.log(filteredResults)
 
     },[])
 
@@ -92,10 +116,7 @@ const Shop = () => {
     }
 
 
-    const loadFilteredResults = (newFilters) => {
-          return  console.log(newFilters,'backend')
 
-    }
 
     return(
         <Layout
@@ -127,7 +148,20 @@ const Shop = () => {
 
 
                  <div className="col-8">
-                     {JSON.stringify(myFilters)}
+                    <h2 className="mb-4"> Products</h2>
+                    <div className="row">
+
+                        {filteredResults.map((product,i) => (
+                            
+                            
+                           
+                           <Card key={i} product={product}/>
+                        
+                            )
+
+                        )}
+
+                    </div>
                  </div>
 
              </div>
