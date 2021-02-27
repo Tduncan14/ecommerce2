@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import Layout from './Layout';
 import {getProducts} from './apiCore';
 import Card from './Card'
+import Search from './Search';
 
 
 const Home = () => {
@@ -49,6 +50,7 @@ const Home = () => {
 
 <h2 className="mb-4"> Arrived </h2>
 
+<Search />
 <div className="row">
 {    productByArrival.map((product,i) => (
 
