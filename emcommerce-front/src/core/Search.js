@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {getCategories} from './apiCore';
+import {getCategories,list} from './apiCore';
 import Card from './Card';
 
 
@@ -56,9 +56,32 @@ const Search = () => {
 
 
 
-const searchSubmit = () => {
+const searchData = () => {
+    
+     if(search){
 
-    //
+        list({search:search || undefined, category})
+        .then(response => {
+
+            if(response.error){
+                console.log(response.error)
+            }
+
+            else{
+                setData({...data, results:response, searched:true})
+            }
+            
+        })
+     }
+}
+
+
+const searchSubmit = (event) => {
+ //
+ event.preventDefault()
+ searchData()
+
+
 
 
 
@@ -66,17 +89,16 @@ const searchSubmit = () => {
 
 
 
-const handleChange = () => {
+const handleChange = (name )=> event => {
 
-
-
+  setData({...data, [name]:event.target.value, searched:false})
 
 }
 
 
   const searchForm = () => (
 
-    <form onSubmit={searchSubmit}>
+    <form  onSubmit={searchSubmit}>
 
        <span className="input-group-text">
            <div className="input-group input-group-lg">
@@ -120,7 +142,7 @@ const handleChange = () => {
 
         <div className="row">
 
-            <div className="container">
+            <div className="container mb-3">
                 {searchForm()}
             </div>
          

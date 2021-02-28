@@ -46,11 +46,14 @@ const Home = () => {
     },[])
 
 
-   return( <Layout title="Home Page" description="E-Commerce" className="container-fluid">
+   return( <Layout title="Home Page" description="E-Commerce" className="contai
+   ner-fluid">
+
+<Search />
 
 <h2 className="mb-4"> Arrived </h2>
 
-<Search />
+
 <div className="row">
 {    productByArrival.map((product,i) => (
 
