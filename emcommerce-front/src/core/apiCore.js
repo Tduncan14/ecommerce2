@@ -69,7 +69,7 @@ export const list = params => {
 
     const query = queryString.stringify(params)
 
-    return fetch(`${API}/products/search${query}`,{
+    return fetch(`${API}/products/search?${query}`,{
 
         method:"GET"
     }).then(response => {

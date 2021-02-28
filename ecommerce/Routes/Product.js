@@ -27,6 +27,8 @@ router.post("/products/by/search", listBySearch);
 
 router.get('/product/photo/:productId',photo)
 
+router.get("/products/search",listSearch)
+
 router.param("userById",findbyId);
 router.param("productId",productById);
 

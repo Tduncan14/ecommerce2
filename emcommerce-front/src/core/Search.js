@@ -96,6 +96,22 @@ const handleChange = (name )=> event => {
 }
 
 
+const searchedProducts =(results = []) => {
+
+return(
+    <div className="row">
+    { results.map((product,i) => (
+        <Card key={i} product={product} />
+    ))}
+    </div>
+
+)
+
+
+
+}
+
+
   const searchForm = () => (
 
     <form  onSubmit={searchSubmit}>
@@ -146,6 +162,11 @@ const handleChange = (name )=> event => {
                 {searchForm()}
             </div>
          
+            <div className="conatiner-fluid mb-3">
+                  {searchedProducts(results)}
+                  
+            </div>
+    
         </div>
     )
 
