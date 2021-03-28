@@ -75,7 +75,7 @@ export const list = params => {
     }).then(response => {
 
         return response.json();
-    }).catch(err => console.log(err))
+    }).catch(error => console.log(error))
 
 
 }

@@ -450,7 +450,22 @@ exports.listSearch =(req,res) => {
 
         if(req.query.category && req.query.category != 'All'){
             query.category = req.query.category
-        }
+        } 
+
+        // find the product object with 2 properties
+
+        Product.find(query,(err,products) =>{
+
+
+            if(err){
+                return res.status(400).json({
+
+                    error:errorHandler(err)
+                })
+            }
+      
+            res.json(products)
+        }).select('-photo')
     }
 
      

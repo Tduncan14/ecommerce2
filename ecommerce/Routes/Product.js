@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const {create,productById,read,remove,update,list,listRelated, listCategories,listBySearch,photo} = require('../Controllers/Product')
+const {create,productById,read,remove,update,list,listRelated, listCategories,listBySearch,photo,listSearch} = require('../Controllers/Product')
 const {requireSignin,isAuth,isAdmin} = require('../Controllers/Auths')
 const {findbyId} = require("../Controllers/UserController")
 
