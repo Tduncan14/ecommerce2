@@ -95,14 +95,35 @@ const handleChange = (name )=> event => {
 
 }
 
+const searchMessage =(searched,results) =>{
+
+    if(searched && results.length > 0){
+
+
+        console.log("results")
+        return `Found ${results.length} products`
+    }
+
+    if(searched && results.length < 1){
+
+        console.log(`${results.length} the results`)
+        return `No products found`
+    }
+}
+
 
 const searchedProducts =(results = []) => {
 
 return(
+    <div>
+        <h2 className="mt-4 mb-4">
+            {searchMessage(searched,results)}
+        </h2>
     <div className="row">
     { results.map((product,i) => (
         <Card key={i} product={product} />
     ))}
+    </div>
     </div>
 
 )
