@@ -8,6 +8,46 @@ import Search from './Search';
 const Product = () => {
 
 
+    const [product,setProduct] = useState({})
+    const [error, setError] = useState(false)
+
+
+
+    const loadSingleProduct = productId => {
+
+        read().then(data => {
+
+
+            if(data.error){
+                setError(data.error)
+            
+        }
+
+        else{
+
+            setProduct(data)
+
+        }
+        
+        
+
+
+
+
+    })}
+
+
+    useEffect(() =>{
+
+        const productId = props.match.params.productId
+
+
+        loadSingleProduct(productId)
+
+        
+
+    },[])
+
 
 
 
@@ -24,6 +64,7 @@ const Product = () => {
               <p>Product page</p>
 
 
+       <div className="row">{JSON.stringify(product)}</div>
 
           </Layout>
 
