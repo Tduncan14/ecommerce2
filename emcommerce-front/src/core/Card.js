@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import ShowImage from './ShowImage';
-
+import moment from 'moment'
 
 const Card = ({product,showViewProductButton= true}) => {
 
@@ -37,10 +37,15 @@ const Card = ({product,showViewProductButton= true}) => {
                 <div className="card-body">
                     <ShowImage item={product} url="product"/>
                      <p className="lead mt-2">{product.description.substring(0,100)}</p>
-                     <p>${product.price}</p>
-                     <Link to={`/product/${product._id}`}>
+                     <p className="black-9">${product.price}</p>
+                     <p className="black-8">Category:{product.category && product.category.name}</p>
+
+                     <p className="black-8">
+                          Added on {moment(product.createdAt).fromNow()}
+                     </p>
+                     {/* <Link to={`/product/${product._id}`}>
                         {showViewButton(showViewProductButton)}
-                     </Link>
+                     </Link> */}
                      
 
                      <button className="btn btn-outline-warning mt-2 mb-2">

@@ -14,8 +14,9 @@ exports.productById = (req,res,next,id) => {
 
 
     console.log('getting data from the database')
-    Product.findById(id).exec((err,product) => {
-
+    Product.findById(id).populate('category').exec((err,product) => {
+      
+      
 
       if(err || !product){
 
