@@ -95,6 +95,31 @@ export const read = (productId) => {
 
 
 
+export const listRelated = (productId) => {
+
+
+    return fetch(`${API}/products/related/${productId}`,{
+        method:"GET"
+    }).then(data =>{
+
+
+
+    }).catch(()=>{
+
+
+    })
+
+
+
+
+
+
+
+}
+
+
+
+
 
 
 
