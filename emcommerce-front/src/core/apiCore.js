@@ -100,12 +100,16 @@ export const listRelated = (productId) => {
 
     return fetch(`${API}/products/related/${productId}`,{
         method:"GET"
-    }).then(data =>{
+    }).then(response =>{
+
+        return response.json()
 
 
+    }).catch((err)=>{
 
-    }).catch(()=>{
+        console.log(err)
 
+        
 
     })
 

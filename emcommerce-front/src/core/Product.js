@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Layout from "./Layout";
-import {read} from './apiCore';
+import {read,listRelated} from './apiCore';
 import Card from './Card';
 import Search from './Search';
 
@@ -10,7 +10,7 @@ const Product = (props) => {
 
     const [product,setProduct] = useState({})
     const [error, setError] = useState(false)
-
+    const [relatedProduct,setrelatedProduct] = useState([])
 
 
     const loadSingleProduct = productId => {
@@ -26,6 +26,18 @@ const Product = (props) => {
         else{
 
             setProduct(data)
+            //  fetch related products
+
+            listRelated(data._id).then(data =>{
+                if(data.error){
+                    setError(data.error)
+                }
+                else{
+
+                }
+            })
+
+
 
         }
         
@@ -47,6 +59,8 @@ const Product = (props) => {
         
 
     },[])
+
+
 
 
 
