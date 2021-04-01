@@ -60,7 +60,7 @@ const Product = (props) => {
 
         
 
-    },[])
+    },[props])
 
 
 
