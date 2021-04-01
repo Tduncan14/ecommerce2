@@ -34,6 +34,8 @@ const Product = (props) => {
                 }
                 else{
 
+                    setrelatedProduct(data);
+
                 }
             })
 
@@ -77,6 +79,9 @@ const Product = (props) => {
 
               <div className = "row">
 
+
+                <div className="col-8">
+
                   {
                       product &&
                       product.description &&
@@ -85,6 +90,25 @@ const Product = (props) => {
                       showViewProductButton={false}/>
                   }
 
+            </div>
+               <div className="col-4">
+                   <h4> Related Products</h4>
+
+                   {
+                       relatedProduct.map((p,i) => (
+
+                        <div className="mb-3">
+
+
+                            <Card key={i} product={p} />
+
+                        
+                        </div>
+
+                       ))
+                   }
+
+               </div>
 
 
 
