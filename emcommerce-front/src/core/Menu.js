@@ -2,6 +2,7 @@ import React from 'react'
 import {Link,withRouter} from 'react-router-dom';
 import {signout,isAuthenicated} from '../auth/apiIndex';
 import {Dashboard} from '../user/Userdashboard';
+import {itemTotal} from './cartHelper';
 
 const isActive = (history,path) =>{
 
@@ -36,6 +37,19 @@ const Menu = ({history}) => {
                   style={isActive(history,"/shop")}
                   to="/shop">
                       Shop
+                  </Link>
+            </li>
+
+
+            <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  style={isActive(history,"/cart")}
+                  to="/cart"
+                  >
+                      Cart <sup><small className="cart-badge">
+                          {itemTotal()}
+                          </small></sup>
                   </Link>
             </li>
 

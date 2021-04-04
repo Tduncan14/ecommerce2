@@ -46,10 +46,30 @@ export const itemTotal = () => {
          if(localStorage.getItem('cart')){
 
 
-            return Json.parse(localStorage.getItem('cart')).length
+            return JSON.parse(localStorage.getItem('cart')).length
 
         }
     }
 
     return 0;
+}
+
+//  grabs items from localstorage
+
+
+export const getCart = () => {
+
+    if(typeof window !== "undefined"){
+
+        if(localStorage.getItem('cart')){
+
+            return JSON.parse(localStorage.getItem('cart'))
+        }
+
+
+    }
+
+
+     return [];
+
 }
