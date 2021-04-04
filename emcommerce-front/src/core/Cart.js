@@ -68,6 +68,10 @@ const Cart = () => {
                      items.length > 0 ? showItems() : noItemsMessage
                     }
                 </div>
+
+                <div className="col-6">
+                    <p> Show check options/shipping address/total/update quantity</p>
+                </div>
             </div>
 
 
@@ -79,3 +83,5 @@ const Cart = () => {
 
     
 }
+
+export default Cart
