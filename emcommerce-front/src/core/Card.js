@@ -6,7 +6,7 @@ import {addItem} from './cartHelper'
 import { useState } from 'react';
 
 
-const Card = ({product,showViewProductButton= true, showAddToCartButton = true}) => {
+const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,cardUpdate = false}) => {
 
     const[redirect,setRedirect] = useState(false)
 
