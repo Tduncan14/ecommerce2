@@ -63,6 +63,8 @@ export const getCart = () => {
 
         if(localStorage.getItem('cart')){
 
+            console.log(localStorage.getItem('cart'))
+
             return JSON.parse(localStorage.getItem('cart'))
         }
 

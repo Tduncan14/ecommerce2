@@ -17,6 +17,10 @@ const Cart = () => {
 
         setItems(getCart())
 
+        console.log(setItems(getCart()),'the function')
+
+        console.log(items,'this is the items')
+
 
 
 
@@ -66,7 +70,7 @@ const Cart = () => {
             <div className="row">
                 <div className="col-6">
                     {
-                     items.length > 0 ? showItems() : noItemsMessage
+                     items.length > 0 ? showItems(items) : noItemsMessage
                     }
                 </div>
 
