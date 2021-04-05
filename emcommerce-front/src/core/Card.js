@@ -6,7 +6,7 @@ import {addItem} from './cartHelper'
 import { useState } from 'react';
 
 
-const Card = ({product,showViewProductButton= true}) => {
+const Card = ({product,showViewProductButton= true, showAddToCartButton = true}) => {
 
     const[redirect,setRedirect] = useState(false)
 
@@ -61,13 +61,16 @@ const Card = ({product,showViewProductButton= true}) => {
     }
 
 
-    const showAddToCardButton = () => {
+    const showAddToCardButton = (showAddToCartButton) => {
 
-        return (
+          return (showAddToCartButton &&(
+
+         
             <button onClick={addToCart} className="btn btn-outline-warning mt-2 mb-2">
                 Add to cart
             </button>
         )
+          )
 
 
     }
@@ -124,7 +127,9 @@ const Card = ({product,showViewProductButton= true}) => {
                               Add to cart
                           </button> */}
 
-                          {showAddToCardButton()}
+                          {showAddToCardButton(showAddToCartButton)}
+
+               
 
                 </div>
 
