@@ -88,7 +88,10 @@ const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,
     }
 
 
+  const showCartUpdateOptions = cartUpdate =>{
 
+    return cartUpdate && <div>Increment/Decrement</div>
+  }
 
 
 
@@ -128,6 +131,9 @@ const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,
                           </button> */}
 
                           {showAddToCardButton(showAddToCartButton)}
+
+
+                          {showCartUpdateOptions(cardUpdate)}
 
                
 

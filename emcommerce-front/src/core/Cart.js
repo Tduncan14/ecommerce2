@@ -39,7 +39,7 @@ const Cart = () => {
 
                     <Card key={i} product={product}
                      showAddToCartButton ={false} 
-                     cartUpdate={true} />
+                     cardUpdate={true} />
                     
                 ))}
             </div>
