@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Layout from './Layout';
-import {getCart} from './cartHelper';
+import {getCart,removeItem} from './cartHelper';
 import Card from './Card';
 import {Link} from 'react-router-dom';
 
@@ -39,7 +39,8 @@ const Cart = () => {
 
                     <Card key={i} product={product}
                      showAddToCartButton ={false} 
-                     cardUpdate={true} />
+                     cardUpdate={true} 
+                     showRemoveProduct={true}/>
                     
                 ))}
             </div>
