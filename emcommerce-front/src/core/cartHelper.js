@@ -118,7 +118,7 @@ export const removeItem = (productId) => {
 
 
 
-  cart.map((product,i) => {
+  cart.map((product,i) => {      
 
     if(product._id === productId){
         cart.splice(i,1)
