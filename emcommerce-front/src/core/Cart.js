@@ -25,7 +25,7 @@ const Cart = () => {
 
 
 
-    },[])
+    },[items])
 
     const showItems = (cart) => {
 
