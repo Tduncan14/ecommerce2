@@ -15,7 +15,8 @@ const cors = require('cors')
       const userRoutes = require ('./Routes/User');
       const catergoryRoutes = require('./Routes/Category')
       const ProductRoutes = require('./Routes/Product')
-    
+      const brainTreeRoutes = require('./Routes/Braintree');
+
       mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true }).then(()=>{
 
 
@@ -37,6 +38,7 @@ app.use('/api',authRoutes)
 app.use('/api',userRoutes)
 app.use('/api',catergoryRoutes)
 app.use('/api',ProductRoutes)
+app.use('/api',brainTreeRoutes);
 
 const PORT = process.env.PORT || 5000
 
