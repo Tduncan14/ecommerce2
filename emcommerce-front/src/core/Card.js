@@ -127,12 +127,14 @@ const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,
 
         showRemoveProduct && (
 
+            <Link to="/shop">
             <button 
               onClick={ () => {removeItem(product._id)}}
               className="btn btn-outline-danger mt-2 mb-2
               ">
                   Remove Product
               </button>
+              </Link>
         )
      )
 
