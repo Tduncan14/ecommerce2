@@ -10,7 +10,7 @@ const Cart = () => {
 
 
     const [items, setItems] = useState([]);
-
+    const [run, setRun] = useState(false);
 
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const Cart = () => {
 
 
 
-    },[items])
+    },[run])
 
     const showItems = (cart) => {
 
@@ -40,7 +40,7 @@ const Cart = () => {
                     <Card key={i} product={product}
                      showAddToCartButton ={false} 
                      cardUpdate={true} 
-                     showRemoveProduct={true}/>
+                     showRemoveProductButton={true}/>
                     
                 ))}
             </div>

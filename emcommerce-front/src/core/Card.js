@@ -6,7 +6,7 @@ import {addItem,updateItem,removeItem} from './cartHelper'
 import { useState } from 'react';
 
 
-const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,cardUpdate = false, showRemoveProduct = false}) => {
+const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,cardUpdate = false, showRemoveProductButton = false}) => {
 
     const[redirect,setRedirect] = useState(false)
 
@@ -128,7 +128,7 @@ const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,
         showRemoveProduct && (
 
             <button 
-              onClick={removeItem(product._id)}
+              onClick={ () => {removeItem(product._id)}}
               className="btn btn-outline-danger mt-2 mb-2
               ">
                   Remove Product
@@ -178,7 +178,7 @@ const Card = ({product,showViewProductButton= true, showAddToCartButton = true ,
                           {showAddToCardButton(showAddToCartButton)}
 
 
-                          {showRemoveButton(showRemoveProduct)}
+                          {showRemoveButton(showRemoveProductButton)}
 
 
                           {showCartUpdateOptions(cardUpdate)}
