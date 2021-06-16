@@ -4,9 +4,6 @@ const braintree = require('braintree');
 require('dotenv').config();
 
 
-BRAINTREE_PUBLIC_KEY=" jxtwyctntjktf69x"
-BRAINTREE_PRIVATE_KEY = "aab21dc856ae6c7bd280c6e4368e0662"
-BRAINTREE_MERCHANT_ID= "fzsw43wqctch4bmy"
 
 
 
