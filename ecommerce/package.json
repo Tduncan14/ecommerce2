@@ -13,6 +13,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "braintree": "^3.3.0",
+    "braintree-web": "^3.78.2",
+    "braintree-web-drop-in-react": "^1.2.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
