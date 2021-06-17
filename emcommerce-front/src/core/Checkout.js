@@ -23,11 +23,12 @@ const Checkout = ({products}) => {
     const userId = isAuthenicated() && isAuthenicated().user._id
     const token = isAuthenicated() && isAuthenicated().token
 
-
-
     const getToken = (userId,token) => {
 
         getBrainTreeClientToken(userId,token).then(data =>{
+
+
+            console.log(data.clientToken,"in the function on checkout")
 
             if(data.error){
 
@@ -35,12 +36,16 @@ const Checkout = ({products}) => {
 
             }
             else{
-                console.log(console.table(data,data.clientToken))
+               
                 setData({...data, clientToken: data.clientToken})
+                   console.log(data.clientToken)
             }
         })
 
     }
+
+    
+    console.log(userId,token)
 
 
     useEffect(() => {
@@ -62,11 +67,13 @@ const Checkout = ({products}) => {
     }
 
     const showCheckout = () => {
+
         {isAuthenicated() ? (
-            <button className="btn btn-success">
+           <div>
+               <h1> h1</h1>
                {showDropIn}
-            </button>
-        ) :(
+            </div>
+        ) : (
 
             <Link  to="/signin">
                 <button className="btn btn-primary">
@@ -80,6 +87,8 @@ const Checkout = ({products}) => {
 
     const showDropIn = () => {
 
+
+        //   console.log(console.table(data.clientToken, products.length))
         <div>
             {
                 data.clientToken !== null && products.length > 0 ? 
@@ -103,7 +112,7 @@ const Checkout = ({products}) => {
         
         
 
-        {showCheckout()}
+        {showDropIn()}
   
     </div>
 

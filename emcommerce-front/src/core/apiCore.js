@@ -137,6 +137,7 @@ export const getBrainTreeClientToken = (userId,token) => {
         }
     }).
     then(response => {
+        console.log(response,"this is the response")
         return response.json();
     })
     .catch(err => console.log(err))
