@@ -17,7 +17,7 @@ const cors = require('cors')
       const ProductRoutes = require('./Routes/Product')
       const brainTreeRoutes = require('./Routes/Braintree');
 
-      mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true }).then(()=>{
+      mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true ,useNewUrlParser: true, useCreateIndex:true }).then(()=>{
 
 
         console.log('database has been connected')

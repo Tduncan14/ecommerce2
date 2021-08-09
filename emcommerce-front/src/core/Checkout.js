@@ -48,6 +48,31 @@ const Checkout = ({products}) => {
     console.log(userId,token)
 
 
+    const buy = () => {
+
+        //send the nonce to your server
+        // nonce = data.instance.requestPaymentMethod(
+
+          let nonce;
+         let getNonce = data.instance.requestPaymentMethod()
+         .then(data => {
+             console.log(data)
+             nonce = data.nonce
+
+             // once you have nonce(card type, card number)
+         })
+         .catch( error => {
+             console.log('dropin',error)
+             setData({...data,error:error.message})
+         })
+
+        
+
+
+
+    }
+
+
     useEffect(() => {
 
         getToken(userId,token)
@@ -97,7 +122,7 @@ const Checkout = ({products}) => {
                   <DropIn options={{authorization:data.clientToken}}
                     onInstance={instance => data.instance = instance} />
 
-                    <button className="btn btn-success">Checkout</button>
+                    <button onClick={buy} className="btn btn-success">Pay</button>
                 </div>  
 
 
@@ -113,6 +138,7 @@ const Checkout = ({products}) => {
         
 
         {showDropIn()}
+        {showCheckout()}
   
     </div>
 

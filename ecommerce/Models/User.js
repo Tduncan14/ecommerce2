@@ -35,7 +35,8 @@ const UserSchema = new mongoose.Schema({
 
     role:{
         type:Number,
-        default:
+        default:0,
+        
     },
 
     history:{
