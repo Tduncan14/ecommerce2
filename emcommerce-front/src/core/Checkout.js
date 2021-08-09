@@ -43,7 +43,7 @@ const Checkout = ({products}) => {
         })
 
     }
-
+ 
     
     console.log(userId,token)
 
@@ -71,6 +71,15 @@ const Checkout = ({products}) => {
 
 
     }
+
+    const showError = error => {
+
+
+        <div className="alert alert-danger" style={{display: error ? '' :'none'}}></div>
+        
+    }
+
+
 
 
     useEffect(() => {
@@ -138,6 +147,7 @@ const Checkout = ({products}) => {
         
 
         {showDropIn()}
+        {showError(data.error)}
         {showCheckout()}
   
     </div>
